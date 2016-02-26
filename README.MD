@@ -32,7 +32,7 @@ Kata Steps / Business Rules
 
     Note: `acceleration` = `force / mass`
 
-7) Photons (light) have a mass of 0. These should not accelerate under any force.
+7) Photons (light) have a mass of 0 and always move at the speed of light. These should not accelerate under any force.
 
 8) The universe should be able to simulate multiple bodies at once (ignore collisions).
 
@@ -42,7 +42,7 @@ Kata Steps / Business Rules
 
     Note: `[acceleration applied to other body] = [a small constant] x [mass of other body] / [distance between other body and you squared]`
 
-    Note: `[distance between two bodies] = square root of ([difference in x coordinates squared] + [difference in y coordinates squared])`
+    Note: `[distance between two bodies squared] = ([difference in x coordinates] squared) + ([difference in y coordinates] squared)`
 
     you can decide the value of `[a small constant]` or ignore it completely
 
