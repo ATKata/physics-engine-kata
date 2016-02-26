@@ -16,8 +16,19 @@ public class Universe {
         return bodies;
     }
 
-    public void simulate() {
+    public void simulate(double time, double xAcceleration, double yAcceleration) {
         // Do something
+        bodies.forEach((body)-> updatePosition(body, time, xAcceleration, yAcceleration));
+    }
+
+    private void updatePosition(Body body, double time, double xForce, double yForce) {
+        double distanceX = body.getXVelocity() * time;
+        double distanceY = body.getYVelocity() * time;
+        body.setXVelocity(body.getXVelocity()+((xForce / body.getMass()) * time));
+        body.setYVelocity(body.getYVelocity()+((yForce / body.getMass()) * time));
+        body.setXPosition(body.getXPosition()+distanceX);
+        body.setYPosition(body.getYPosition()+distanceY);
+
     }
 
 }

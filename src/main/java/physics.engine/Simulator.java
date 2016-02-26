@@ -1,6 +1,8 @@
 package physics.engine;
 
 import physics.engine.body.Body;
+import physics.engine.body.Particle;
+import physics.engine.body.Photon;
 import physics.engine.body.Universe;
 
 import javax.swing.*;
@@ -19,6 +21,8 @@ public class Simulator extends JPanel {
         * Set Up The Universe here
         * universe.addBody(.....)
         */
+        universe.addBody(new Particle(0,0,1,0,40));
+        universe.addBody(new Photon(0,0,10,5));
         runSimulation();
     }
 
@@ -29,7 +33,7 @@ public class Simulator extends JPanel {
             public void run() {
                 int time = 0;
                 while (time < SIMULATION_LENGTH) {
-                    universe.simulate();
+                    universe.simulate(1, 1, 0);
                     repaint();
                     try {
                         Thread.sleep(100);
@@ -50,7 +54,11 @@ public class Simulator extends JPanel {
         super.paintComponent(g);
 
         for(Body body : universe.getBodies()){
-            g.setColor(Color.BLUE);
+            if(body instanceof Photon) {
+                g.setColor(Color.RED);
+            } else {
+                g.setColor(Color.BLUE);
+            }
             g.fillOval(
                     (int)(UNIVERSE_SIZE_X / 2 + body.getXPosition()),
                     (int)(UNIVERSE_SIZE_Y / 2 - body.getYPosition()),
